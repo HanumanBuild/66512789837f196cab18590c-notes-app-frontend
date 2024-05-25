@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
 import axiosInstance from '../api/axiosInstance';
 
+// Ensure that the form is correctly capturing user input for email and password.
+// Verify that the form submission is making an API call to the backend.
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Check the form input handlers
+  // Ensure that the `email` and `password` state variables are being updated correctly when the user types in the input fields.
+
+  // Check the form submission handler
+  // Ensure that the `handleSubmit` function is correctly preventing the default form submission behavior.
+  // Verify that the `handleSubmit` function is making an API call to the backend using Axios.
+
+  // Update the `handleSubmit` function if necessary
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -48,3 +59,7 @@ function Login() {
 }
 
 export default Login;
+
+// Check if the form is correctly capturing user input and making an API call to the backend
+// Ensure the form submission is handled correctly
+// Add comments before and after the edited sections so I know where in the original file to place the edits.
