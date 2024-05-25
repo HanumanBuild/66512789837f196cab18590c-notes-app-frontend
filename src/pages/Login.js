@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
+import axiosInstance from '../api/axiosInstance';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+    try {
+      const response = await axiosInstance.post('/api/auth/login', { email, password });
+      localStorage.setItem('token', response.data.token);
+      // Redirect to dashboard or handle successful login
+    } catch (error) {
+      console.error('Error logging in', error);
+      // Handle error
+    }
   };
 
   return (

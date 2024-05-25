@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
+import axiosInstance from '../api/axiosInstance';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
+    if (password !== confirmPassword) {
+      console.error('Passwords do not match');
+      return;
+    }
+    try {
+      const response = await axiosInstance.post('/api/auth/signup', { email, password });
+      localStorage.setItem('token', response.data.token);
+      // Redirect to dashboard or handle successful signup
+    } catch (error) {
+      console.error('Error signing up', error);
+      // Handle error
+    }
   };
 
   return (
