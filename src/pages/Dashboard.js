@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../api/axiosInstance';
 
+// Dashboard component
 function Dashboard() {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
 
+  // Fetch notes on component mount
   useEffect(() => {
     const fetchNotes = async () => {
       try {
@@ -23,6 +25,7 @@ function Dashboard() {
     fetchNotes();
   }, []);
 
+  // Handle form submission to create a new note
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -70,4 +73,5 @@ function Dashboard() {
   );
 }
 
+// Export the Dashboard component
 export default Dashboard;
